@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#C5F0EE</color>
+    <color name="colorPrimaryDark">#C5F0EE</color>
+    <color name="colorAccent">#FAE3D9</color>
+    <color name="textColor">#8BBABB</color>
+    <color name="buttonColor">#C5F0EE</color>
+    <color name="napisyRegiter">#1eb2a6</color>
+    <color name="whiteish">#f5f5f5</color>
+    <color name="pinkish">#ffc7c7</color>
+    <color name="greyish">#8785a2</color>
+    <color name="beige">#efcfb6</color>
+</resources>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@drawable/gradient"
+                app:srcCompat="@drawable/logo1" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:text="Choose event to add"
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/spinner_calendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/calendarEvents"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="10dp" />
+            <DatePicker
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner"
+                android:id="@+id/datepickerSpinner"/>
+
+
+            <Button
+                android:id="@+id/addButtonDialog"
+                android:layout_width="100dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center|center_horizontal|center_vertical"
+                android:layout_marginLeft="70dp"
+                android:layout_marginRight="70dp"
+                android:background="@drawable/roundedbutton"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:text="Add"
+                android:textAlignment="center"
+                android:textSize="10dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
