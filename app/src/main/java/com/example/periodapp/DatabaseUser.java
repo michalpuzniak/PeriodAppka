@@ -9,15 +9,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
 public final class DatabaseUser {
-    public static final String COLUMN_ID = "_id";
-    public static final String COLUMN_NAME = "name";
-    public static final String COLUMN_WEIGHT = "weight";
-    public static final String COLUMN_HEIGHT = "height";
-    public static final String COLUMN_BIRTHDATE = "birthday";
-    public static final String COLUMN_NICK = "nick";
-    public static final String COLUMN_MAIL = "mail";
-    public static final String COLUMN_TYPE = "type";
-    public static final String COLUMN_EVENT = "event";
+    private static final String COLUMN_ID = "_id";
+    private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_WEIGHT = "weight";
+    private static final String COLUMN_HEIGHT = "height";
+    private static final String COLUMN_BIRTHDATE = "birthday";
+    private static final String COLUMN_NICK = "nick";
+    private static final String COLUMN_MAIL = "mail";
+    private static final String COLUMN_TYPE = "type";
+    private static final String COLUMN_EVENT = "event";
 
 
     private final String TABLE_NAME = "users";
@@ -139,10 +139,7 @@ public final class DatabaseUser {
 
     public boolean nickCheck(String nickname1) {
         Cursor cursor = ourDatabase.rawQuery("SELECT *  FROM  users WHERE nick= " + "'" + nickname1 + "'", null);
-        if (cursor.getCount() == 0) {
-            return true;
-        }
-        return false;
+        return cursor.getCount() == 0;
     }
 
     public String getID(String nickname1) throws SQLException {
@@ -158,9 +155,4 @@ public final class DatabaseUser {
             rec = String.valueOf(recc);
         }
         return rec;}
-
-    public String getEvents{
-        Cursor cursor= ourDatabase.rawQuery()
-
-    }
 }
