@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F9E7E7"
     tools:context=".Calendar">
 
     <RelativeLayout
@@ -16,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="80dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="90dp"
             app:cardCornerRadius="20dp"
@@ -44,7 +45,8 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="151dp"
             android:layout_marginBottom="23dp"
-            android:text="Button" />
+            android:background="@drawable/roundedbutton"
+            android:text="add event" />
 
     </RelativeLayout>
 

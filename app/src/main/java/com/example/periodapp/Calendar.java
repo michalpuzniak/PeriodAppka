@@ -1,6 +1,7 @@
 package com.example.periodapp;
 
 import android.content.Context;
+import android.database.SQLException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,7 +16,6 @@ import androidx.fragment.app.Fragment;
 
 import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
-import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,14 +25,13 @@ import java.util.List;
 
 
 
-public class Calendar extends Fragment implements DialogCalendarAdder.DateAdderInterface {
+public class Calendar extends Fragment implements DialogEventAdder.DateAdderInterface {
     List<EventDay> events = new ArrayList<>();
     CalendarView calendarView;
     private OnFragmentInteractionListener mListener;
 
-    public Calendar() {
+    public Calendar() {}
 
-    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,14 +44,6 @@ public class Calendar extends Fragment implements DialogCalendarAdder.DateAdderI
         return inflater.inflate(R.layout.fragment_calendar, container, false);
 
     }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -69,13 +60,33 @@ public class Calendar extends Fragment implements DialogCalendarAdder.DateAdderI
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         calendarView =  view.findViewById(R.id.calendarView);
         Button addButton=view.findViewById(R.id.addButtonDialog);
+        ArrayList<String> list_of_Events= new ArrayList<>();
+        DatabaseUser db = new DatabaseUser(getActivity());
+        db.open();
+        Toast.makeText(getActivity(), SaveSharedPreferences.getNick(getActivity()), Toast.LENGTH_SHORT).show();
+        String nick = SaveSharedPreferences.getNick(getActivity()).trim();
+
+        list_of_Events= db.getEvents(nick);
+
+        for (String s:list_of_Events
+             ) {
+
+            s=s.substring(s.indexOf(",")+1);
+            String date= s.substring(0,s.indexOf(","));
+            String option = s.substring(s.indexOf(",")+1);
+            int numberOption=0;
+            if(option.trim().equals("start")){
+                numberOption=1;
+            }
+            addDate(date,numberOption);
+        }
+
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogCalendarAdder dialogCalendarAdder = new DialogCalendarAdder();
-                dialogCalendarAdder.setTargetFragment(Calendar.this,1);
-                dialogCalendarAdder.show(getFragmentManager(), "dateAdder");
-
+                DialogEventAdder dialogEventAdder = new DialogEventAdder();
+                dialogEventAdder.setTargetFragment(Calendar.this,1);
+                dialogEventAdder.show(getFragmentManager(), "dateAdder");
             }
         });
     }
@@ -83,17 +94,14 @@ public class Calendar extends Fragment implements DialogCalendarAdder.DateAdderI
     public void addDate(String date1, int option) {
         java.util.Calendar calendar1 = java.util.Calendar.getInstance();
         Date dateToAdd;
-
-
-
         SimpleDateFormat simpleDateFormat= new SimpleDateFormat("dd/MM/yyyy");
         try {
             dateToAdd= simpleDateFormat.parse(date1);
+            Toast.makeText(getContext(),date1, Toast.LENGTH_SHORT).show();
             calendar1.setTime(dateToAdd);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
         if(option==1){
             events.add(new EventDay(calendar1,R.drawable.ic_tampon_icon));
             Toast.makeText(getContext(), "yoooo", Toast.LENGTH_SHORT).show();
@@ -102,6 +110,22 @@ public class Calendar extends Fragment implements DialogCalendarAdder.DateAdderI
             events.add(new EventDay(calendar1, R.drawable.ic_happy_lady));
         }
         calendarView.setEvents(events);
+        try {
+            DatabaseUser db = new DatabaseUser(getActivity());
+            db.open();
+            String type_of_event= null;
+            if(option==1){
+                type_of_event="start";
+            }
+            if(option==0){
+                type_of_event="end";
+            }
+            db.addEventToDatabase(date1,SaveSharedPreferences.getNick(getContext()),type_of_event);
+            Toast.makeText(getContext(), "yo888oo", Toast.LENGTH_SHORT).show();
+            db.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
     public interface OnFragmentInteractionListener {

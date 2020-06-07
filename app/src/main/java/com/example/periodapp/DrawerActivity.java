@@ -29,6 +29,19 @@ public class DrawerActivity extends AppCompatActivity {
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setupDrawerContents(nv);
+        FragmentManager fm= getSupportFragmentManager();
+        Fragment main_fragment= null;
+        Class fragClass;
+        fragClass= Calendar.class;
+        try {
+            main_fragment=(Fragment) fragClass.newInstance();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }
+        fm.beginTransaction().replace(R.id.framelayout,main_fragment).commit();
+
     }
 
     public void selectItemDrawer(MenuItem menuItem){

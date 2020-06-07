@@ -5,6 +5,8 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +26,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DialogCalendarAdder extends DialogFragment {
+public class DialogEventAdder extends DialogFragment {
 
 
     Button add;
@@ -38,6 +40,8 @@ public class DialogCalendarAdder extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
                 View view= inflater.inflate(R.layout.calendar_adder,container,false);
+                getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
                 spin=view.findViewById(R.id.spinner_calendar);
                 add=view.findViewById(R.id.addButtonDialog);
                 datePicker=view.findViewById(R.id.datepickerSpinner);

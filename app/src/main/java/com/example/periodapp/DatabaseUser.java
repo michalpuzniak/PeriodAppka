@@ -7,6 +7,9 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public final class DatabaseUser {
     private static final String COLUMN_ID = "_id";
@@ -17,7 +20,7 @@ public final class DatabaseUser {
     private static final String COLUMN_NICK = "nick";
     private static final String COLUMN_MAIL = "mail";
     private static final String COLUMN_TYPE = "type";
-    private static final String COLUMN_EVENT = "event";
+    private static final String COLUMN_EVENT_DATE= "event";
 
 
     private final String TABLE_NAME = "users";
@@ -54,7 +57,7 @@ public final class DatabaseUser {
             db.execSQL(sqlcode);
 
             String sqlcode2 = "CREATE TABLE " + TABLE_EVENTS + " (" + COLUMN_NICK + " TEXT NOT NULL, " +
-                    COLUMN_EVENT + " TEXT NOT NULL, " +
+                    COLUMN_EVENT_DATE + " TEXT NOT NULL, " +
                     COLUMN_TYPE + " TEXT NOT NULL " + " );";
             db.execSQL(sqlcode2);
 
@@ -64,6 +67,7 @@ public final class DatabaseUser {
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+            db.execSQL(("DROP tABLE IF EXISTS "+TABLE_EVENTS ));
             onCreate(db);
         }
     }
@@ -88,15 +92,6 @@ public final class DatabaseUser {
         cv.put(COLUMN_NICK, nick);
         return ourDatabase.insert(TABLE_NAME, null, cv);
     }
-    public long addEventToDatabase(String event,String nick, String type)
-    {
-        ContentValues cv = new ContentValues();
-        cv.put(COLUMN_NICK,nick);
-        cv.put(COLUMN_EVENT,event);
-        cv.put(COLUMN_TYPE,type);
-        return ourDatabase.insert(TABLE_EVENTS,null,cv);
-    }
-
     public String getData() {
 
         String[] columns = new String[]{COLUMN_ID, COLUMN_NAME, COLUMN_WEIGHT, COLUMN_HEIGHT, COLUMN_BIRTHDATE};
@@ -141,10 +136,7 @@ public final class DatabaseUser {
         Cursor cursor = ourDatabase.rawQuery("SELECT *  FROM  users WHERE nick= " + "'" + nickname1 + "'", null);
         return cursor.getCount() == 0;
     }
-
     public String getID(String nickname1) throws SQLException {
-
-
         long recc = 0;
         String rec = null;
         Cursor mCursor = ourDatabase.rawQuery(
@@ -155,4 +147,33 @@ public final class DatabaseUser {
             rec = String.valueOf(recc);
         }
         return rec;}
+
+        //functions for second Database
+    //funckje dla bazy danych dla kalendarza
+    public long addEventToDatabase(String event,String nick, String type)
+    {
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_NICK,nick);
+        cv.put(COLUMN_EVENT_DATE,event);
+        cv.put(COLUMN_TYPE,type);
+        return ourDatabase.insert(TABLE_EVENTS,null,cv);
+    }
+    public ArrayList<String> getEvents(String nickname1){
+        ArrayList<String> lista = new ArrayList<>();
+        String result;
+        Cursor mCursor = ourDatabase.rawQuery(
+                "SELECT * FROM  eventsTable WHERE nick= " + "'" + nickname1 + "'", null);
+
+        for (mCursor.moveToFirst(); !mCursor.isAfterLast(); mCursor.moveToNext()) {
+            result = mCursor.getString(0) + "," + mCursor.getString(1) + "," + mCursor.getString(2) ;
+            Toast.makeText(ourContext, result, Toast.LENGTH_SHORT).show();
+            lista.add(result);
+
+        }
+        int size= lista.size();
+        String g= String.valueOf(size);
+        Toast.makeText(ourContext, g, Toast.LENGTH_SHORT).show();
+        mCursor.close();
+        return lista;
+    }
 }
