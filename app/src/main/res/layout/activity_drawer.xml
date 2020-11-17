@@ -6,29 +6,67 @@
     android:id="@+id/drawerLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:background="@drawable/gradient"
     tools:context=".DrawerActivity"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="match_parent"><ImageView
+        android:layout_width="match_parent"
+        android:layout_height="221dp"
+        android:scaleType="fitXY"
+        android:id="@+id/header1"
+        android:src="@drawable/header1">
+
+    </ImageView>
+        <ImageView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="180dp"
+            android:layout_marginRight="-85dp"
+            android:src="@drawable/circle_transparent">
+
+        </ImageView>
+        <ImageView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="410dp"
+            android:layout_marginLeft="-65dp"
+            android:src="@drawable/circle_transparent">
+
+        </ImageView>
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="410dp"
+            android:layout_marginBottom="-50dp"
+            android:layout_marginRight="-50dp"
+            android:src="@drawable/circle">
+        </ImageView>
+        <ImageView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="95dp"
+            android:layout_marginBottom="-50dp"
+            android:src="@drawable/circle_transparent"></ImageView>
+    </RelativeLayout>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/framelayout"
-        >
-
-
+        android:id="@+id/framelayout">
     </FrameLayout>
 
-
-        <com.google.android.material.navigation.NavigationView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:id="@+id/nav"
-            app:headerLayout="@layout/header"
-            app:itemTextColor="@color/napisyRegiter"
-            app:menu="@menu/drawermenu">
-         </com.google.android.material.navigation.NavigationView>
-
-
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header"
+        app:itemTextColor="@color/napisyRegiter"
+        app:menu="@menu/drawermenu"></com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>

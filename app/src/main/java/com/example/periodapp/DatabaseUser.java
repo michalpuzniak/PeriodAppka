@@ -67,7 +67,7 @@ public final class DatabaseUser {
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-            db.execSQL(("DROP tABLE IF EXISTS "+TABLE_EVENTS ));
+            db.execSQL(("DROP TABLE IF EXISTS "+TABLE_EVENTS ));
             onCreate(db);
         }
     }
@@ -166,13 +166,11 @@ public final class DatabaseUser {
 
         for (mCursor.moveToFirst(); !mCursor.isAfterLast(); mCursor.moveToNext()) {
             result = mCursor.getString(0) + "," + mCursor.getString(1) + "," + mCursor.getString(2) ;
-            Toast.makeText(ourContext, result, Toast.LENGTH_SHORT).show();
             lista.add(result);
 
         }
         int size= lista.size();
         String g= String.valueOf(size);
-        Toast.makeText(ourContext, g, Toast.LENGTH_SHORT).show();
         mCursor.close();
         return lista;
     }

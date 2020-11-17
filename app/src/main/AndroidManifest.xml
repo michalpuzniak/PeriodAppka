@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.periodapp">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.google.android.gm.permission.WRITE_GMAIL" />
+    <uses-permission android:name="com.google.android.gm.permission.AUTO_SEND" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/launch"
@@ -9,14 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PersonalInfo"></activity>
         <activity android:name=".DrawerActivity" />
         <activity android:name=".ChangeUser" />
-        <activity android:name=".wykres" />
-        <activity android:name=".NewAccount" />
+        <activity android:name=".SignUpActivity" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/AppTheme.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
