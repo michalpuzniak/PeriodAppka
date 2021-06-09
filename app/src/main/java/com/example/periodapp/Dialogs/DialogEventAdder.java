@@ -1,4 +1,4 @@
-package com.example.periodapp;
+package com.example.periodapp.Dialogs;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -15,12 +15,14 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.fragment.app.DialogFragment;
+
+import com.example.periodapp.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -52,15 +54,26 @@ public class DialogEventAdder extends DialogFragment {
                         int day= datePicker.getDayOfMonth();
                         int month =datePicker.getMonth()+1;
                         int year= datePicker.getYear();
-                        String dateToAdd = (day)+"/"+(month)+"/"+(year);
-
-                        if (spin.getSelectedItem().toString().length()>20) {
+                        String dateToAdd;
+                        if(day<10){
+                            if(month<10) {
+                                dateToAdd="0"+day+"/"+"0"+month+"/"+year;
+                            }
+                            else{
+                                dateToAdd="0"+day+"/"+month+"/"+year;
+                            }
+                        }
+                        else{
+                            if(month<10){
+                                dateToAdd=day+"/"+"0"+month+"/"+year;}
+                            else dateToAdd=day+"/"+month+"/"+year;                       
+                        }
+                        if (spin.getSelectedItem().toString().equals("Start of Menstruation")) {
                             option =1;
                         }
-                        else {
+                        else if(spin.getSelectedItem().toString().equals("End of Menstruation")){
                             option =0;
                         }
-
                         listener.addDate(dateToAdd, option);
                         getDialog().dismiss();
                     }

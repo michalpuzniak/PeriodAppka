@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.BaseColumns;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -22,10 +21,22 @@ public final class DatabaseUser {
     private static final String COLUMN_TYPE = "type";
     private static final String COLUMN_EVENT_DATE= "event";
 
+    private static final String COLUMN_USER_ID= "user_id";
+    private static final String COLUMN_DATE=    "diet_date";
+    private static final String COLUMN_DESCRIPTION= "description";
+    private static final String COLUMN_TITLE= "title";
+    private static final String COLUMN_PIC= "picture";
+    private static final String COLUMN_DB_ID= "db_id";
+
+
+
+
 
     private final String TABLE_NAME = "users";
     private final String TABLE_EVENTS = "eventsTable";
-    private final int DATABASE_VERSION = 1;
+    private final String TABLE_DIET = "dietTable";
+    private final String TABLE_MOOD = "moodTable";
+    private final int DATABASE_VERSION = 2;
     private final String DATABASE_NAME = "UserDatabase";
     private DBHelper ourHelper;
     private final Context ourContext;
@@ -61,14 +72,35 @@ public final class DatabaseUser {
                     COLUMN_TYPE + " TEXT NOT NULL " + " );";
             db.execSQL(sqlcode2);
 
+            String sqlcode3 = "CREATE TABLE " + TABLE_DIET + " (" + COLUMN_USER_ID + " TEXT NOT NULL, " +
+                    COLUMN_DATE + " TEXT NOT NULL, " +
+                    COLUMN_TITLE + " TEXT NOT NULL, " +
+                    COLUMN_DESCRIPTION + " TEXT NOT NULL, " +
+                    COLUMN_PIC + " TEXT NOT NULL, " +
+                    COLUMN_DB_ID + " INTEGER PRIMARY KEY AUTOINCREMENT"+ " );";
+            db.execSQL(sqlcode3);
+
+            String sqlcode4 = "CREATE TABLE " + TABLE_MOOD + " (" + COLUMN_USER_ID + " TEXT NOT NULL, " +
+                    COLUMN_DATE + " TEXT NOT NULL, " +
+                    COLUMN_TITLE + " TEXT NOT NULL, " +
+                    COLUMN_DESCRIPTION + " TEXT NOT NULL, " +
+                    COLUMN_PIC + " TEXT NOT NULL, " +
+                    COLUMN_DB_ID + " INTEGER PRIMARY KEY AUTOINCREMENT"+ " );";
+            db.execSQL(sqlcode4);
+
+
 
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
             db.execSQL(("DROP TABLE IF EXISTS "+TABLE_EVENTS ));
+            db.execSQL(("DROP TABLE IF EXISTS " + TABLE_DIET));
+            db.execSQL(("DROP TABLE IF EXISTS " + TABLE_MOOD));
             onCreate(db);
+
         }
     }
 
@@ -148,13 +180,12 @@ public final class DatabaseUser {
         }
         return rec;}
 
-        //functions for second Database
     //funckje dla bazy danych dla kalendarza
-    public long addEventToDatabase(String event,String nick, String type)
+    public long addEventToDatabase(String date,String nick, String type)
     {
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_NICK,nick);
-        cv.put(COLUMN_EVENT_DATE,event);
+        cv.put(COLUMN_EVENT_DATE,date);
         cv.put(COLUMN_TYPE,type);
         return ourDatabase.insert(TABLE_EVENTS,null,cv);
     }
@@ -174,4 +205,85 @@ public final class DatabaseUser {
         mCursor.close();
         return lista;
     }
+    public long deleteEvent(String date){
+        return ourDatabase.delete(TABLE_EVENTS,COLUMN_EVENT_DATE+"=?",new String[]{date});
+    }
+    // funkcje do bazy danych stworzonej dla diet i mood;
+
+    public long addDietItemDB(String userID, String date, String title, String descrpition, String pic){
+            ContentValues cv = new ContentValues();
+            cv.put(COLUMN_USER_ID, userID);
+            cv.put(COLUMN_DATE, date);
+            cv.put(COLUMN_TITLE, title);
+            cv.put(COLUMN_DESCRIPTION, descrpition);
+            cv.put(COLUMN_PIC, pic);
+            return ourDatabase.insert(TABLE_DIET,null, cv);
+        }
+    public ArrayList<String> getDietlist(String userID, String date){
+            ArrayList<String> lista= new ArrayList<>();
+            String result;
+            Cursor cursor= ourDatabase.rawQuery("SELECT * FROM dietTable where user_id= "+"'"+userID +"'" +"AND diet_date= "+ "'"+date+ "'",null );
+            for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()){
+                result= cursor.getString(2)+","+ cursor.getString(3)+","+cursor.getString(4)+","+ cursor.getString(5);
+                lista.add(result);
+            }
+            cursor.close();
+            return lista;
+    }
+
+    public long removeDiet(String userid, String date, int id){
+        return ourDatabase.delete(TABLE_DIET,COLUMN_DB_ID+"=" +id,null);
+
+    }
+
+
+    public String getLastMeal(String userid){
+        String last;
+        Cursor cursor =ourDatabase.rawQuery("SELECT * FROM dietTable ORDER BY diet_date DESC LIMIT 1", null);
+        last = cursor.getString(2);
+        cursor.close();
+        return last;
+    }
+    public ArrayList<String> getMeals(String nickname1){
+        ArrayList<String> lista = new ArrayList<>();
+        String result;
+        Cursor mCursor = ourDatabase.rawQuery(
+                "SELECT * FROM  dietTable WHERE user_id= " + "'" + nickname1 + "'", null);
+
+        for (mCursor.moveToFirst(); !mCursor.isAfterLast(); mCursor.moveToNext()) {
+            result = mCursor.getString(2);
+            lista.add(result);
+        }
+        mCursor.close();
+        return lista;
+    }
+
+    // funkcje do bazy danych moodtable
+    public long addmoodItem(String userID, String date, String title, String descrpition, String pic){
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_USER_ID, userID);
+        cv.put(COLUMN_DATE, date);
+        cv.put(COLUMN_TITLE, title);
+        cv.put(COLUMN_DESCRIPTION, descrpition);
+        cv.put(COLUMN_PIC, pic);
+        return ourDatabase.insert(TABLE_MOOD,null, cv);
+    }
+    public ArrayList<String> getmoodList(String userID, String date){
+        ArrayList<String> lista= new ArrayList<>();
+        String result;
+        Cursor cursor= ourDatabase.rawQuery("SELECT * FROM moodTable where user_id= "+"'"+userID +"'" +"AND diet_date= "+ "'"+date+ "'",null );
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()){
+            result= cursor.getString(2)+","+ cursor.getString(3)+","+cursor.getString(4)+","+ cursor.getString(5);
+            lista.add(result);
+        }
+        cursor.close();
+        return lista;
+    }
+
+    public long removeMood(int id){
+       return ourDatabase.delete(TABLE_MOOD, COLUMN_DB_ID + " = "+ id , null);
+    }
+
+
+
 }

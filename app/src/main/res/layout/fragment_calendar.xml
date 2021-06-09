@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Home">
+    tools:context=".Home_Calendar.Home">
 
     <RelativeLayout
         android:id="@+id/constraint"
@@ -13,22 +13,56 @@
 
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/Prdection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/pink"
+            android:padding="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/whiteish"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-light"
+                android:drawableLeft="@drawable/menstruation"
+                android:padding="5dp"
+                android:text="78%"/>
+            <TextView
+                android:layout_marginTop="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/whiteish"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-light"
+                android:drawableLeft="@drawable/clock"
+                android:padding="5dp"
+                android:text="17 days"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:id="@+id/cardView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="125dp"
             android:layout_marginRight="20dp"
-            app:cardCornerRadius="20dp"
-            >
+            app:cardCornerRadius="20dp">
 
             <com.applandeo.materialcalendarview.CalendarView
                 android:id="@+id/calendarView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:headerColor="@color/beige"
-                app:selectionColor="@color/beige">
+                app:headerColor="@color/pink"
+                app:selectionColor="@color/pink"
+                app:todayLabelColor="@color/purple">
 
             </com.applandeo.materialcalendarview.CalendarView>
 
@@ -41,8 +75,12 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="30dp"
-            android:background="@drawable/roundedbutton"
-            android:text="add event" />
+            android:background="@drawable/rounded_button"
+            android:fontFamily="sans-serif-light"
+            android:padding="10dp"
+            android:text="add event"
+            android:textColor="@color/whiteish"
+            android:textStyle="bold" />
     </RelativeLayout>
 
 </FrameLayout>

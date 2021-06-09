@@ -11,10 +11,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 public class HelpFragment extends Fragment {
-    ImageView contactUs;
+    ImageButton contactUs;
 
     public HelpFragment() {
         // Required empty public constructor
@@ -33,7 +34,7 @@ public class HelpFragment extends Fragment {
 
     }
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
-        contactUs= view.findViewById(R.id.contactUs);
+        contactUs= view.findViewById(R.id.email_button);
         contactUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

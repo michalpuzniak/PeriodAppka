@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3141025641025641" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/drawable/circle_transparent.xml" value="0.3141025641025641" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/drawable/dialog_shape.xml" value="0.3141025641025641" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/drawable/food_background.xml" value="0.3141025641025641" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/drawable/gradient.xml" value="0.3141025641025641" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/drawable/grey_button.xml" value="0.3141025641025641" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/drawable/ic_award.xml" value="0.3141025641025641" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.3141025641025641" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/drawable/nav_bar_shape.xml" value="0.2552083333333333" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/drawable/rounded_rel.xml" value="0.2552083333333333" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/drawable/rounded_shape.xml" value="0.2552083333333333" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/drawable/rounded_shape_down.xml" value="0.2552083333333333" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/drawable/selected.xml" value="0.3141025641025641" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/drawable/unselected.xml" value="0.3141025641025641" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/activity_drawer.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/activity_log_in.xml" value="0.13680555555555557" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/activity_personal_info.xml" value="0.13680555555555557" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/activity_reset_password.xml" value="0.14479166666666668" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/calendar_adder.xml" value="0.13680555555555557" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/dialog_dietitem_adder.xml" value="0.13680555555555557" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/dialog_layout.xml" value="0.13680555555555557" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/dialog_remove.xml" value="0.13680555555555557" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/diet_layout.xml" value="0.13680555555555557" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/diet_tab_layout.xml" value="0.2" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/fragment_charts.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/fragment_help.xml" value="0.13680555555555557" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/fragment_welcome1.xml" value="0.13680555555555557" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/fragment_welcome2.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/fragment_welcome3.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/login_fragment_layout.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/main.xml" value="0.16" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/mood_dialog_layout.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/mood_tab_layout.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/profile_layout.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/rv_row.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/selected_date.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/signup_fragment_layout.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/singlerow_cal.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/layout/xxxx.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/MichalPuzniak/AndroidStudioProjects/PeriodApp/app/src/main/res/menu/drawermenu.xml" value="0.24444444444444444" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

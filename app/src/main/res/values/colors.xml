@@ -14,4 +14,9 @@
     <color name="circle_grad2_PurpT">#6FCFC8E4</color>
     <color name="circle_grad">#EFC8B9</color>
     <color name="circle_grad_purp">#CDC6E3</color>
+    <color name="pink">#FFB4A2 </color>
+    <color name="mint">#92D1C3</color>
+    <color name ="purple">#C1666B</color>
+    <color name="lightGrey">#f0f0f0</color>
+
 </resources>

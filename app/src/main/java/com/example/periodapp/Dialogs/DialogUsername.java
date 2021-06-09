@@ -1,4 +1,4 @@
-package com.example.periodapp;
+package com.example.periodapp.Dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -12,6 +12,8 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
+
+import com.example.periodapp.R;
 
 public class DialogUsername extends AppCompatDialogFragment {
 

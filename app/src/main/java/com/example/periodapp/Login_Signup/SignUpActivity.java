@@ -1,4 +1,4 @@
-package com.example.periodapp;
+package com.example.periodapp.Login_Signup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+import com.example.periodapp.DrawerActivity;
+import com.example.periodapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -33,7 +35,7 @@ import java.util.Map;
 public class SignUpActivity extends AppCompatActivity implements Serializable {
 
     Button signupButton;
-    EditText etUsername,  etPassword,etMail, etBirthdate;
+    EditText etUsername,  etPassword,etMail, etBirthdate, etRepPass;
     Calendar c;
     DatePickerDialog dpd;
     FirebaseAuth mAuth;
@@ -55,6 +57,7 @@ public class SignUpActivity extends AppCompatActivity implements Serializable {
         etUsername= findViewById(R.id.etLogin);
         etMail= findViewById(R.id.etEmail);
         etPassword=findViewById(R.id.etPassword);
+
         etBirthdate= findViewById(R.id.etBirth);
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
